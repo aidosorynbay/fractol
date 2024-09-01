@@ -1,23 +1,30 @@
-LIBFT_DIR	=	./libft
+SRC = main.c init.c utils.c
+OBJS = ${SRC:.c=.o}
+CC = cc
+NAME = fractol
+CFLAGS = -Wall -Wextra -Werror
+LIBDIR = ./minilibx
+LIBS = -L$(LIBDIR) -lmlx -framework OpenGL -framework Cocoa -framework AppKit
+LIBFT_DIR = ./libft
+LIBFT = ${LIBFT_DIR}/libft.a
 
-LIBFT		=	${LIBFT_DIR}/libft.a
+all: ${NAME}
 
-CCFLAGS		=	cc -Wall -Werror -Wextra
+%.o: %.c
+	${CC} ${CFLAGS} -c $< -o $@
 
-%.o			:	%.c
-			${CCFLAGS} -c $< -o $@
+${NAME}: ${LIBFT} ${OBJS}
+	$(CC) ${CFLAGS} ${OBJS} $(LIBS) -o ${NAME}
 
-${LIBFT}	:
-			make -C ${LIBFT_DIR}
+${LIBFT}:
+	make -C ${LIBFT_DIR}
 
-clean		:
-			rm -f __________
-			make -C ${LIBFT_DIR} clean
+clean:
+	rm -f ${OBJS}
 
-fclean		:	clean
-			${MAKE} fclean -C ./libft
-			rm -rf ${SERVER} ${CLIENT}
+fclean: clean
+	rm -f ${NAME}
 
-re			:	fclean all
+re: fclean all
 
-.PHONY		: 	all bonus clean fclean re
+.PHONY: all clean fclean re
