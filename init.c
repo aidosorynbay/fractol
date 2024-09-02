@@ -6,16 +6,16 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:31:29 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/09/01 19:49:25 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/02 21:34:39 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "minilibx/mlx.h"
 
-void	data_init(t_fractal *fractal)
+static void	data_init(t_fractal *fractal)
 {
-	fractal->bound = 4;
+	fractal->boundary = 4;
 	fractal->iterations = 42;
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;

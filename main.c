@@ -6,7 +6,7 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:48:35 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/09/01 19:54:10 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/02 22:57:44 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	main(int argc, char **argv)
 			fractal.julia_y = atodbl(argv[3]);
 		}
 		fractal_init(&fractal);
-		fractal_render(&fractal); // function for render
+		fractol_events(&fractal);
+		fractal_render(&fractal);
 		mlx_loop(fractal.mlx_ptr);
 	}
 	else
