@@ -6,7 +6,7 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:48:35 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/09/03 20:07:11 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:09:11 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main(int argc, char **argv)
 		{
 			fractal.julia_x = atodbl(argv[2]);
 			fractal.julia_y = atodbl(argv[3]);
-			printf("Julia parameters: x = %f, y = %f\n", fractal.julia_x, fractal.julia_y);
 		}
 		fractal_init(&fractal);
 		fractal_render(&fractal);
