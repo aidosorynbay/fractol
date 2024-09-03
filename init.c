@@ -6,7 +6,7 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:31:29 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/09/02 21:34:39 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:15:31 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static void	data_init(t_fractal *fractal)
 {
 	fractal->boundary = 4;
-	fractal->iterations = 42;
+	fractal->iterations = 100;
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;
@@ -30,10 +30,9 @@ void	fractal_init(t_fractal *fractal)
 		ft_putstr_fd(MALLOC_ERROR, 2);
 		exit(1);
 	}
-	fractal->win_ptr = mlx_new_image(fractal->mlx_ptr, WIDTH, HEIGHT);
+	fractal->win_ptr = mlx_new_window(fractal->mlx_ptr, WIDTH, HEIGHT, "Mandelbrot");
 	if (fractal->win_ptr == NULL)
 	{
-		mlx_destroy_window(fractal->mlx_ptr, NULL);
 		free(fractal->mlx_ptr);
 		ft_putstr_fd(MALLOC_ERROR, 2);
 		exit(1);
@@ -41,8 +40,7 @@ void	fractal_init(t_fractal *fractal)
 	fractal->img.img_ptr = mlx_new_image(fractal->mlx_ptr, WIDTH, HEIGHT);
 	if (fractal->img.img_ptr == NULL)
 	{
-		mlx_destroy_image(fractal->mlx_ptr, NULL);
-		mlx_destroy_window(fractal->mlx_ptr, NULL);
+		mlx_destroy_window(fractal->mlx_ptr, fractal->win_ptr);
 		free(fractal->mlx_ptr);
 		ft_putstr_fd(MALLOC_ERROR, 2);
 		exit(1);

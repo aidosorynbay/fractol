@@ -5,7 +5,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
-# include <libft/libft.h>
+# include "libft/libft.h"
 # define ESC 53
 # define ERROR_MESSAGE "Please enter \n\t\"./fractol mandelbrot\" or \n\t\"./fractol julia <value_1> <value_2>\"\n"
 # define MALLOC_ERROR "Malloc failed. Womp womp"
@@ -23,12 +23,10 @@ typedef	struct	s_img
 
 typedef	struct	s_fractal
 {
-	char	*name;
-
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
-
+	char	*name;
 	int		boundary;
 	int		iterations;
 	double	shift_x;
@@ -47,30 +45,24 @@ typedef	struct	s_complex
 // Basic Colors
 #define BLACK   0x000000
 #define WHITE   0xFFFFFF
-#define RED     0xFF0000
-#define GREEN   0x00FF00
-#define BLUE    0x0000FF
+#define PSYCHEDELIC_PURPLE  0x9B30FF  // Deep Purple
+#define PSYCHEDELIC_PINK    0xFF69B4  // Hot Pink
+#define PSYCHEDELIC_GREEN   0x32CD32  // Lime Green
+#define PSYCHEDELIC_YELLOW  0xFFFF00  // Bright Yellow
+#define PSYCHEDELIC_ORANGE  0xFF4500  // Orange Red
+#define PSYCHEDELIC_BLUE    0x1E90FF  // Dodger Blue
+#define PSYCHEDELIC_CYAN    0x00FFFF  // Cyan
+#define PSYCHEDELIC_MAGENTA 0xFF00FF  // Magenta
+#define PSYCHEDELIC_RED     0xFF0000  // Bright Red
+#define PSYCHEDELIC_LIME    0x00FF00  // Bright Lime
 
-// Shades of Gray
-#define GRAY    0x808080
-#define DARK_GRAY 0x404040
-#define LIGHT_GRAY 0xC0C0C0
 
-// Extended Colors
-#define YELLOW  0xFFFF00
-#define CYAN    0x00FFFF
-#define MAGENTA 0xFF00FF
-#define ORANGE  0xFFA500
-#define PURPLE  0x800080
-#define PINK    0xFFC0CB
-#define BROWN   0xA52A2A
-
-fractal_init(&fractal);
-fractal_render(&fractal);
+void	fractal_init(t_fractal *fractal);
+void    fractal_render(t_fractal *fractal);
 double	atodbl(char *str);
 double	scaling(double u_n, double new_min, double new_max, double old_max);
 t_complex	sum_c(t_complex z, t_complex c);
 t_complex	square_c(t_complex z);
-void    fractol_events(t_complex *fractol)
+void    fractol_events(t_fractal *fractal);
 
 #endif 

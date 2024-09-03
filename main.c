@@ -6,7 +6,7 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:48:35 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/09/02 22:57:44 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/03 20:07:11 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@ int	main(int argc, char **argv)
 	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
 		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
-		fractal.name = argv[1];
-		if (fractal.name == "julia")
+		fractal.name = ft_strdup(argv[1]);
+		if (!ft_strncmp(fractal.name, "julia", 5))
 		{
 			fractal.julia_x = atodbl(argv[2]);
 			fractal.julia_y = atodbl(argv[3]);
+			printf("Julia parameters: x = %f, y = %f\n", fractal.julia_x, fractal.julia_y);
 		}
 		fractal_init(&fractal);
-		fractol_events(&fractal);
 		fractal_render(&fractal);
+		fractol_events(&fractal);
 		mlx_loop(fractal.mlx_ptr);
 	}
 	else

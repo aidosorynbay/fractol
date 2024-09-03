@@ -13,7 +13,7 @@
 #include "fractol.h"
 #include "minilibx/mlx.h"
 
-static void    my_pixel_put(int x, int y, t_img *img, color)
+static void    my_pixel_put(int x, int y, t_img *img, int color)
 {
     int offset;
 
@@ -21,30 +21,43 @@ static void    my_pixel_put(int x, int y, t_img *img, color)
     *(unsigned int *)(img->img_pixels_ptr + offset) = color;
 }
 
-static void    put_pixel(int x, int y, t_fractal *fractal, double x_min, double x_max, double y_min, double y_max)
+static void put_pixel(int x, int y, t_fractal *fractal, double x_min, double x_max, double y_min, double y_max)
 {
-    t_complex   z;
-    t_complex   c;
-    int         i;
+    t_complex z;
+    t_complex c;
+    int i;
+    int color;
 
     i = 0;
     z.real = scaling(x, x_min, x_max, WIDTH);
     z.i = scaling(y, y_min, y_max, HEIGHT);
-    c = z;
-
+    if (!ft_strncmp(fractal->name, "julia", 5))
+    {
+        c.real = fractal->julia_x;
+        c.i = fractal->julia_y;
+    }
+    else
+        c = z;
     while (i < fractal->iterations)
     {
-        z = sum_c(square_c(z), c);
-        if ((z.i * z.i) * (z.real * z.real) > fractal->boundary)
+        double z_real_squared = z.real * z.real;
+        double z_imag_squared = z.i * z.i;
+
+        if (z_real_squared + z_imag_squared > fractal->boundary)
         {
             color = scaling(i, BLACK, WHITE, fractal->iterations);
             my_pixel_put(x, y, &fractal->img, color);
-            return ;
+            return;
         }
+
+        z.i = 2 * z.real * z.i + c.i;
+        z.real = z_real_squared - z_imag_squared + c.real;
+
         i++;
     }
-    my_pixel_put(x, y, &fractal->img, MAGENTA);
+    my_pixel_put(x, y, &fractal->img, PSYCHEDELIC_RED);
 }
+
 
 
 void    fractal_render(t_fractal *fractal)
@@ -65,7 +78,11 @@ void    fractal_render(t_fractal *fractal)
     {
         x = 0;
         while (x < WIDTH)
-            put_pixel(x, y, fractal, x_min, x_max, y_mix, y_max);
+        {
+            put_pixel(x, y, fractal, x_min, x_max, y_min, y_max);
+            x++;
+        }
+        y++;
     }
     mlx_put_image_to_window(fractal->mlx_ptr, fractal->win_ptr, fractal->img.img_ptr, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:54:19 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/09/03 00:03:18 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/03 20:11:32 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ double	atodbl(char *str)
 	{
 		decimal = (decimal * 10) + (*str - '0');
 		count++;
+		str++;
 	}
 	decimal = decimal / pow(10, count);
 	result = result + decimal;
