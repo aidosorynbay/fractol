@@ -6,7 +6,7 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 12:44:00 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/08/19 11:57:52 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/04 21:07:18 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <limits.h>
-# include <unistd.h>
 # include "ft_printf.h"
 
 typedef struct s_list

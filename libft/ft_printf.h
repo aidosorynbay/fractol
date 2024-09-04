@@ -6,7 +6,7 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 08:08:03 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/07/21 16:31:13 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/04 21:07:06 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdio.h>
 # include <unistd.h>
 
 int	ft_printf_char(va_list args);

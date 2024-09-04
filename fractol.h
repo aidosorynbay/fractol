@@ -6,7 +6,7 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 18:30:33 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/09/04 20:30:19 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/04 21:07:28 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,9 @@
 # define FRACTOL_H
 
 # include <math.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
 # include "libft/libft.h"
 # define ESC 53
 # define ERROR_MESSAGE "Please enter valid arguments.\n"
-// # define ERR_MSG2 "./fractol mandelbrot\n"
-// # define ERR_MSG3 "./fractol julia [float 1] [float 2]\n"
 # define MALLOC_ERROR "Malloc failed. Womp womp"
 # define HEIGHT 800
 # define WIDTH 800
@@ -48,6 +43,10 @@ typedef struct s_fractal
 	double	zoom;
 	double	julia_x;
 	double	julia_y;
+	double	x_min;
+	double	x_max;
+	double	y_min;
+	double	y_max;
 }				t_fractal;
 
 typedef struct s_complex
