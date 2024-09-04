@@ -6,7 +6,7 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:48:35 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/09/03 22:09:11 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/04 19:57:21 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,19 @@ int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
 
-	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
-		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
+	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 11))
+		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 6)))
 	{
-		fractal.name = ft_strdup(argv[1]);
-		if (!ft_strncmp(fractal.name, "julia", 5))
+		fractal.name = argv[1];
+		if (!ft_strncmp(fractal.name, "julia", 6))
 		{
-			fractal.julia_x = atodbl(argv[2]);
-			fractal.julia_y = atodbl(argv[3]);
+			if (check_float(argv[2]) && check_float(argv[3]))
+			{
+				fractal.julia_x = atodbl(argv[2]);
+				fractal.julia_y = atodbl(argv[3]);
+			}
+			else
+				(ft_putstr_fd(ERROR_MESSAGE, 2), exit(1));
 		}
 		fractal_init(&fractal);
 		fractal_render(&fractal);
@@ -32,8 +37,5 @@ int	main(int argc, char **argv)
 		mlx_loop(fractal.mlx_ptr);
 	}
 	else
-	{
-		ft_putstr_fd(ERROR_MESSAGE, 2);
-		exit(1);
-	}
+		(ft_putstr_fd(ERROR_MESSAGE, 2), exit(1));
 }

@@ -6,68 +6,48 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:54:19 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/09/03 20:11:32 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/04 20:29:18 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "minilibx/mlx.h"
 
-double	atodbl(char *str)
+static void	skip_space(char *str, int *i)
 {
-	double	result;
-	double	decimal;
-	int		sign;
-	int		count;
+	while (str[*i] == ' ' || (str[*i] >= 9 && str[*i] <= 13))
+		(*i)++;
+}
 
-	result = 0;
-	decimal = 0;
-	sign = 1;
+int	check_float(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 0;
 	count = 0;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
+	skip_space(str, &i);
+	while (str[i] != '\0')
 	{
-		if (*str == '-')
-			sign = -1;
-		str++;
+		if (ft_isdigit(str[i]))
+			i++;
+		else if (str[i] == '.' && ft_isdigit(str[i - 1])
+			&& ft_isdigit(str[i + 1]))
+		{
+			i++;
+			count++;
+		}
+		else if ((str[i] == '+' || str[i] == '-') && ft_isdigit(str[i + 1]))
+			i++;
+		else
+			return (0);
 	}
-	while ((*str >= '0' && *str <= '9') && *str != '.')
-	{
-		result = (result * 10) + (*str - '0');
-		str++;
-	}
-	if (*str == '.')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		decimal = (decimal * 10) + (*str - '0');
-		count++;
-		str++;
-	}
-	decimal = decimal / pow(10, count);
-	result = result + decimal;
-	return (result * sign);
+	if (str[i] == '\0' && count <= 1)
+		return (1);
+	return (0);
 }
 
 double	scaling(double u_n, double new_min, double new_max, double old_max)
 {
 	return ((new_max - new_min) * (u_n - 0) / (old_max - 0) + new_min);
-}
-
-t_complex	sum_c(t_complex z, t_complex c)
-{
-	t_complex	res;
-	res.real = z.real + c.real;
-	res.i = z.i + c.i;
-	return (res);
-}
-
-t_complex	square_c(t_complex z)
-{
-	t_complex	res;
-	
-	res.real = pow(z.real, 2) - pow(z.i, 2);
-	res.i = 2 * z.i * z.real;
-	return (res);
 }

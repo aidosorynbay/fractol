@@ -31,7 +31,7 @@ static void put_pixel(int x, int y, t_fractal *fractal, double x_min, double x_m
     i = 0;
     z.real = scaling(x, x_min, x_max, WIDTH);
     z.i = scaling(y, y_min, y_max, HEIGHT);
-    if (!ft_strncmp(fractal->name, "julia", 5))
+    if (!ft_strncmp(fractal->name, "julia", 6))
     {
         c.real = fractal->julia_x;
         c.i = fractal->julia_y;
