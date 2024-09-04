@@ -6,7 +6,7 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 18:30:33 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/09/04 21:35:21 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:10:57 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <math.h>
 # include "libft/libft.h"
 # define ESC 53
-# define ERROR_MESSAGE "Please enter valid arguments.\n"
+# define ERROR_MESSAGE_PART1 "Please enter \n\t\"./fractol mandelbrot\" or \n\t"
+# define ERROR_MESSAGE_PART2 "\"./fractol julia <value_1> <value_2>\"\n"
 # define MALLOC_ERROR "Malloc failed. Womp womp"
 # define HEIGHT 800
 # define WIDTH 800
