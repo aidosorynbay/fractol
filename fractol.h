@@ -6,7 +6,7 @@
 /*   By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 18:30:33 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/09/04 21:07:28 by aorynbay         ###   ########.fr       */
+/*   Updated: 2024/09/04 21:35:21 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,18 @@ typedef struct s_complex
 }				t_complex;
 
 // Basic Colors
-# define BLACK   0x000000
-# define WHITE   0xFFFFFF
-# define PSYCHEDELIC_PURPLE  0x9B30FF  // Deep Purple
-# define PSYCHEDELIC_PINK    0xFF69B4  // Hot Pink
-# define PSYCHEDELIC_GREEN   0x32CD32  // Lime Green
-# define PSYCHEDELIC_YELLOW  0xFFFF00  // Bright Yellow
-# define PSYCHEDELIC_ORANGE  0xFF4500  // Orange Red
-# define PSYCHEDELIC_BLUE    0x1E90FF  // Dodger Blue
-# define PSYCHEDELIC_CYAN    0x00FFFF  // Cyan
-# define PSYCHEDELIC_MAGENTA 0xFF00FF  // Magenta
-# define PSYCHEDELIC_RED     0xFF0000  // Bright Red
-# define PSYCHEDELIC_LIME    0x00FF00  // Bright Lime
+# define BLACK	0x000000
+# define WHITE	0xFFFFFF
+# define GREY	0x333333
+# define DARK_GREY			0x1c1c1c
+# define DARKER_GREY		0x1a1a1a
+# define PSYCHEDELIC_GREEN	0x32CD32  // Lime Green
+# define PSYCHEDELIC_YELLOW	0xFFFF00  // Bright Yellow
+# define PSYCHEDELIC_ORANGE	0xFF4500  // Orange Red
+# define PSYCHEDELIC_BLUE	0x1E90FF  // Dodger Blue
+# define PSYCHEDELIC_CYAN	0x00FFFF  // Cyan
+# define PSYCHEDELIC_RED	0xFF0000  // Bright Red
+# define PSYCHEDELIC_LIME	0x00FF00  // Bright Lime
 
 void	fractal_init(t_fractal *fractal);
 void	fractal_render(t_fractal *fractal);

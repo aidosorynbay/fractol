@@ -49,7 +49,7 @@ static void	put_pixel(int x, int y, t_fractal *fractal, int i)
 		z_imag_squared = z.i * z.i;
 		if (z_real_squared + z_imag_squared > fractal->boundary)
 		{
-			color = scaling(i, BLACK, BLACK, fractal->iterations);
+			color = scaling(i, DARK_GREY, DARKER_GREY, fractal->iterations);
 			my_pixel_put(x, y, &fractal->img, color);
 			return ;
 		}
@@ -57,7 +57,7 @@ static void	put_pixel(int x, int y, t_fractal *fractal, int i)
 		z.real = z_real_squared - z_imag_squared + c.real;
 		i++;
 	}
-	my_pixel_put(x, y, &fractal->img, PSYCHEDELIC_RED);
+	my_pixel_put(x, y, &fractal->img, BLACK);
 }
 
 void	fractal_render(t_fractal *fractal)
