@@ -6,7 +6,7 @@
 #    By: aorynbay <@student.42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/24 12:44:04 by aorynbay          #+#    #+#              #
-#    Updated: 2024/08/09 13:40:53 by aorynbay         ###   ########.fr        #
+#    Updated: 2024/09/06 02:40:59 by aorynbay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CC		= cc
 
 RM		= rm -f
 
-CFLAGS	= -Wall -Werror -Wextra -g3
+CFLAGS	= -Wall -Werror -Wextra
 
 NAME	= libft.a
 

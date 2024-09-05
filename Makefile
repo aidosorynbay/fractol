@@ -8,31 +8,39 @@ NAME		=	fractol
 
 CFLAGS		=	-Wall -Wextra -Werror
 
-LIBDIR		=	./minilibx
+MLXDIR		=	./minilibx
 
-LIBS		=	-L$(LIBDIR) -lmlx -framework OpenGL -framework Cocoa -framework AppKit
+MLX			=	${MLXDIR}/libmlx.a
+
+LIBS		=	-L$(MLXDIR) -lmlx -framework OpenGL -framework Cocoa -framework AppKit
 
 LIBFT_DIR	=	./libft
 
 LIBFT		=	${LIBFT_DIR}/libft.a
 
-all: ${NAME}
+all:	${NAME}
 
-%.o: %.c
+%.o		:	%.c
 	${CC} ${CFLAGS} -c $< -o $@
 
-${NAME}:	${OBJS} ${LIBFT}
+${NAME}	:	${OBJS} ${LIBFT} ${MLX}
 	$(CC) ${CFLAGS} ${OBJS} $(LIBFT) $(LIBS) -o ${NAME}
+
+${MLX}	:
+	make -C ${MLXDIR}
 
 ${LIBFT}:
 	make -C ${LIBFT_DIR}
 
-clean:
+clean	:
 	rm -f ${OBJS}
+	make -C ${LIBFT_DIR} clean
 
-fclean: clean
+fclean	:	clean
 	rm -f ${NAME}
+	make -C ${MLXDIR} clean
+	make -C ${LIBFT_DIR} fclean
 
-re: fclean all
+re		: fclean all
 
-.PHONY: all clean fclean re
+.PHONY	: all clean fclean re
