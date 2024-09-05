@@ -49,7 +49,7 @@ static void	put_pixel(int x, int y, t_fractal *fractal, int i)
 		z_imag_squared = z.i * z.i;
 		if (z_real_squared + z_imag_squared > fractal->boundary)
 		{
-			color = scaling(i, DARK_GREY, DARKER_GREY, fractal->iterations);
+			color = i * 0x0003030a & 0x00ffffff;
 			my_pixel_put(x, y, &fractal->img, color);
 			return ;
 		}
