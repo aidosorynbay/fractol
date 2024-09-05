@@ -7,9 +7,13 @@ CC			=	cc
 NAME		=	fractol
 
 CFLAGS		=	-Wall -Wextra -Werror
+
 LIBDIR		=	./minilibx
+
 LIBS		=	-L$(LIBDIR) -lmlx -framework OpenGL -framework Cocoa -framework AppKit
+
 LIBFT_DIR	=	./libft
+
 LIBFT		=	${LIBFT_DIR}/libft.a
 
 all: ${NAME}
