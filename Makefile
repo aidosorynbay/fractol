@@ -1,12 +1,16 @@
-SRC = main.c init.c utils.c events.c render.c atodbl.c
-OBJS = ${SRC:.c=.o}
-CC = cc
-NAME = fractol
-CFLAGS = -Wall -Wextra -Werror
-LIBDIR = ./minilibx
-LIBS = -L$(LIBDIR) -lmlx -framework OpenGL -framework Cocoa -framework AppKit
-LIBFT_DIR = ./libft
-LIBFT = ${LIBFT_DIR}/libft.a
+SRC			=	main.c init.c utils.c events.c render.c atodbl.c
+
+OBJS		=	${SRC:.c=.o}
+
+CC			=	cc
+
+NAME		=	fractol
+
+CFLAGS		=	-Wall -Wextra -Werror
+LIBDIR		=	./minilibx
+LIBS		=	-L$(LIBDIR) -lmlx -framework OpenGL -framework Cocoa -framework AppKit
+LIBFT_DIR	=	./libft
+LIBFT		=	${LIBFT_DIR}/libft.a
 
 all: ${NAME}
 
